@@ -23,14 +23,14 @@ const EmployeesList = ({ employees, search, dept, ageLow, ageHi }) => {
     return (
         <div className="list-container">
             <div className="eList">
-            <h3>All Employees:</h3>
+            <h3>All Employees</h3>
        {employees.map((employee, i) => {
             return (<Employee key={i} employee={employee}/>);
         })}
         </div>
         {searchedList && 
         <div className="results">
-            <h3>Search Results:</h3>
+            <h3>Search Results</h3>
         {searchedList.map((employee, i) => {
             return (<Employee key={i} employee={employee}/>);
         })}
@@ -46,7 +46,7 @@ const EmployeesList = ({ employees, search, dept, ageLow, ageHi }) => {
         }
         {dept !== null && 
         <div className="dept-results">
-            <h3>{dept} department:</h3>
+            <h3>{dept} department</h3>
         {deptList.map((employee, i) => {
             return (<Employee key={i} employee={employee}/>);
         })}
