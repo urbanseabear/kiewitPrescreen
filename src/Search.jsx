@@ -1,9 +1,11 @@
 import React from 'react';
+import "./styles.scss";
 
-const Search = () => {
+const Search = (props) => {
     return (
         <div>
-            <input type="text" placeholder="Employee Name..."></input>
+            <label className="searchbar" for="search">Search by Name: </label>
+            <input className="searchbar" value={props.search} type="text" placeholder="Employee Name..." name="search" onChange={(e) => props.handleSearch(e)}></input>
         </div>
     )
 }
