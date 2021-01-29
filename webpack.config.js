@@ -1,8 +1,8 @@
-const webpack = require("webpack");
 const path = require("path");
 
 const config = {
-  entry: "./src/index.js",
+  context: __dirname + '/src',
+  entry: './index.js',
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -11,9 +11,20 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: "babel-loader",
         exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+            presets: ['@babel/preset-react', '@babel/preset-env']
+        }
       },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ]
+      }
     ],
   },
   resolve: {
