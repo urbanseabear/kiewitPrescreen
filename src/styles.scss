@@ -1,18 +1,18 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 0.1fr 0.2fr 1fr;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .title {
-    grid-column-end: span 2;
+    grid-column-end: span 3;
     display: flex;
     justify-content: center;
 }
 
 .filter-container {
-    grid-column-end: span 2;
+    grid-column-end: span 3;
     grid-row: 2;
     display: flex;
     justify-content: space-between;
@@ -23,9 +23,25 @@
         border-right: none;
         outline: none;
     }
+    .age-range {
+        font-size: 16px;
+        display: flex;
+        max-height: 1.2rem;
+        .age-in {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            input {
+                display: block;
+                max-width: 2rem;
+            }
+        }
+        
+    }
     .filter-button {
         background-color: goldenrod;
         border: none;
+        cursor: pointer;
         padding: 10px;
         font-size: 14px;
         font-family: Arial, Helvetica, sans-serif;
@@ -39,6 +55,7 @@
       
       .dropdown-content {
         display: none;
+        cursor: pointer;
         position: absolute;
         background-color: #f9f9f9;
         align-content: center;
@@ -53,7 +70,8 @@
             border:hidden;
             display: block;
             .filter:hover {
-                background-color: #bdbdbd
+                background-color: #bdbdbd;
+                text-decoration: underline;
             }
           }
       }
@@ -62,17 +80,27 @@
       }
 }
 .list-container {
-    grid-column: 1;
-    grid-row: 3;
+    grid-column-end: span 3;
     display: flex;
-    
-    justify-content: space-between;
+    justify-items: flex-start;
+    grid-row: 3;
     .eList {
-        position: absolute;
+        grid-column: 1;
+        position: relative;
+        display: flex;
         flex-direction: column;
+        margin-right: 10%;
     }
     .results {
         grid-column: 2;
-        margin-left: 20%;
+        margin-right: 10%;
+        
+    }
+    .dept-results {
+        grid-column: 3;
+        margin-right: 10%;
+    }
+    .age-results {
+        margin-right: 10%;
     }
 }

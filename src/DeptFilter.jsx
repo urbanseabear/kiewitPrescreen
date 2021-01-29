@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-const Filters = ({ handleClick }) => {
+const DeptFilter = ({ handleClick }) => {
     return (
         <div className="dropdown">
             <button className="filter-button">Department Filter</button>
@@ -14,4 +14,4 @@ const Filters = ({ handleClick }) => {
     )
 }
 
-export default Filters;
+export default DeptFilter;

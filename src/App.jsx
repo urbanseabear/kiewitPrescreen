@@ -1,13 +1,16 @@
 import React from 'react';
 import EmployeesList from './EmployeesList';
 import Search from './Search';
-import Filters from './Filters';
+import DeptFilter from './DeptFilter';
+import AgeFilter from './AgeFilter';
 import './styles.scss';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+           ageLow: 0,
+           ageHi: 1000,
            search: '',
            dept: '',
            employees:  [
@@ -50,16 +53,22 @@ class App extends React.Component {
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleSearch(e) {
         e.preventDefault();
         this.setState({search: e.target.value});
     }
+
     handleClick(e) {
         e.preventDefault();
-        console.log(e.target.id);
         this.setState({dept: e.target.id});
+    }
+
+    handleChange(e) {
+        e.preventDefault();
+        this.setState({[e.target.id]: parseInt(e.target.value)})
     }
     render () {
         return (
@@ -67,14 +76,16 @@ class App extends React.Component {
            <h1 className="title">Employee List</h1> 
            <div className="filter-container">
            <Search handleSearch={this.handleSearch} search={this.state.search} />
-           <Filters handleClick={this.handleClick}/>
+           <AgeFilter handleChange={this.handleChange}/>
+           <DeptFilter handleClick={this.handleClick}/>
            </div>
-           <div className="results">
            <EmployeesList 
            employees={this.state.employees}
            search={this.state.search.length >= 1 ? this.state.search : null}
-           dept={this.state.dept !== '' ? this.state.dept : null}/>
-           </div>
+           dept={this.state.dept !== '' ? this.state.dept : null}
+           ageLow={this.state.ageLow}
+           ageHi={this.state.ageHi}
+           />
         </div>
         )
     }
